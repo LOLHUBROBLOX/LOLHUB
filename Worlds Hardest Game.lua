@@ -1,5 +1,7 @@
 local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
 
+--loadstring(game:HttpGet('https://raw.githubusercontent.com/LOLHUBROBLOX/LOLHUB/main/Worlds%20Hardest%20Game.lua'))()
+
 local Window = Rayfield:CreateWindow({
 	Name = "LOL HUB",
 	LoadingTitle = "LOL HUB",
@@ -31,7 +33,7 @@ local Winnow = Tab:CreateButton({
         --
             local no = game.Players.LocalPlayer.LevelChange.Value
             no = no + 1
-
+            if no < "33" then
             local args = {
                 [1] = no,
                 [2] = "\240\159\134\147\240\159\141\140"
@@ -39,6 +41,9 @@ local Winnow = Tab:CreateButton({
             
             game:GetService("ReplicatedStorage"):WaitForChild("Win"):FireServer(unpack(args))
             wait(0.1)
+        else
+            print("End")
+        end
         --
 	end,
 })
