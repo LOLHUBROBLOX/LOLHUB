@@ -153,7 +153,7 @@ UICorner_7.Parent = ds
 
 -- Scripts:
 
-local function TWSPF_fake_script() -- Enter.LocalScript 
+local function SSITDON_fake_script() -- Enter.LocalScript 
 	local script = Instance.new('LocalScript', Enter)
 
 	local button = script.Parent -- Assuming the script is attached to a button
@@ -178,7 +178,6 @@ local function TWSPF_fake_script() -- Enter.LocalScript
 			else
 				button.Parent.Key.Text = "Make By LOL HUB"
 				wait(1)
-				button.Parent.Parent.Parent.LOLGETKEY:Destroy()
 	
 				local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Orion/main/source.lua'))() -- corrected the URL
 	
@@ -287,22 +286,23 @@ local function TWSPF_fake_script() -- Enter.LocalScript
 					end
 				})
 			end
+			button.Parent.Parent.Parent.LOLGETKEY:Destroy()
 		else
 			button.Parent.Key.Text = "Key Error"
 		end
 	end)
 	
 end
-coroutine.wrap(TWSPF_fake_script)()
-local function NZOQBM_fake_script() -- Close.LocalScript 
+coroutine.wrap(SSITDON_fake_script)()
+local function QNAVF_fake_script() -- Close.LocalScript 
 	local script = Instance.new('LocalScript', Close)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		script.Parent.Parent.Parent.Parent.LOLGETKEY:Destroy()
 	end)
 end
-coroutine.wrap(NZOQBM_fake_script)()
-local function HZRQOI_fake_script() -- Main.Dragify 
+coroutine.wrap(QNAVF_fake_script)()
+local function RAHQRNE_fake_script() -- Main.Dragify 
 	local script = Instance.new('LocalScript', Main)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -345,8 +345,8 @@ local function HZRQOI_fake_script() -- Main.Dragify
 		end
 	end)
 end
-coroutine.wrap(HZRQOI_fake_script)()
-local function BNVEFC_fake_script() -- ds.LocalScript 
+coroutine.wrap(RAHQRNE_fake_script)()
+local function VMIW_fake_script() -- ds.LocalScript 
 	local script = Instance.new('LocalScript', ds)
 
 	while true do
@@ -354,4 +354,4 @@ local function BNVEFC_fake_script() -- ds.LocalScript
 		wait(0.5)
 	end
 end
-coroutine.wrap(BNVEFC_fake_script)()
+coroutine.wrap(VMIW_fake_script)()
