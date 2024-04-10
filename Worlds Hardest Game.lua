@@ -8,6 +8,10 @@ local Enter = Instance.new("TextButton")
 local UICorner_3 = Instance.new("UICorner")
 local Close = Instance.new("TextButton")
 local UICorner_4 = Instance.new("UICorner")
+local GameName = Instance.new("TextLabel")
+local UICorner_5 = Instance.new("UICorner")
+local Game = Instance.new("TextLabel")
+local UICorner_6 = Instance.new("UICorner")
 
 --Properties:
 
@@ -92,14 +96,48 @@ Close.TextWrapped = true
 UICorner_4.CornerRadius = UDim.new(0, 88)
 UICorner_4.Parent = Close
 
+GameName.Name = "GameName"
+GameName.Parent = Main
+GameName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+GameName.BorderColor3 = Color3.fromRGB(0, 0, 0)
+GameName.BorderSizePixel = 0
+GameName.Position = UDim2.new(0.188916758, 0, 0.728183925, 0)
+GameName.Size = UDim2.new(0.619899273, 0, 0.099999994, 0)
+GameName.Font = Enum.Font.SourceSans
+GameName.Text = "Worlds Hardest Game"
+GameName.TextColor3 = Color3.fromRGB(0, 0, 0)
+GameName.TextScaled = true
+GameName.TextSize = 14.000
+GameName.TextWrapped = true
+
+UICorner_5.CornerRadius = UDim.new(0, 21)
+UICorner_5.Parent = GameName
+
+Game.Name = "Game"
+Game.Parent = Main
+Game.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Game.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Game.BorderSizePixel = 0
+Game.Position = UDim2.new(0.395151138, 0, 0.601415098, 0)
+Game.Size = UDim2.new(0.210579306, 0, 0.099999994, 0)
+Game.Font = Enum.Font.SourceSansBold
+Game.Text = "Game Name"
+Game.TextColor3 = Color3.fromRGB(0, 0, 0)
+Game.TextScaled = true
+Game.TextSize = 14.000
+Game.TextWrapped = true
+
+UICorner_6.CornerRadius = UDim.new(0, 12)
+UICorner_6.Parent = Game
+
 -- Scripts:
 
-local function SRVRNR_fake_script() -- Enter.LocalScript 
+local function NWVS_fake_script() -- Enter.LocalScript 
 	local script = Instance.new('LocalScript', Enter)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		local Key = script.Parent.Parent.Key.Text
-		
+		local player = game.Players
 		if Key == "CC20A1" then
 			script.Parent.Parent.Key.Text = "|CC20A1|"
 			wait(0.3)
@@ -108,8 +146,15 @@ local function SRVRNR_fake_script() -- Enter.LocalScript
 			script.Parent.Parent.Key.Text = "Load.."
 			wait(0.3)
 			script.Parent.Parent.Key.Text = "Load..."
-			
-			script.Parent.Parent["LOL HUB"]:Destroy()
+			wait(0.3)
+			script.Parent.Parent.Key.Text = "Scan Admin"
+			wait(0.3)
+			if player.KubaloPL or player.martix6m then
+				game.Players.LocalPlayer:Kick("Found Admin")
+			else
+			script.Parent.Parent.Key.Text = "Make By LOL HUB"
+			wait(1)
+			script.Parent.Parent.Parent.Parent.LOLGETKEY:Destroy()
 			
 			local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 	
@@ -217,23 +262,23 @@ local function SRVRNR_fake_script() -- Enter.LocalScript
 					end
 				end
 			})
-	
+			end
 			
 		else
 			script.Parent.Parent.Key.Text = "Key Error"
 		end
 	end)
 end
-coroutine.wrap(SRVRNR_fake_script)()
-local function CVVVQOE_fake_script() -- Close.LocalScript 
+coroutine.wrap(NWVS_fake_script)()
+local function SDJTCTX_fake_script() -- Close.LocalScript 
 	local script = Instance.new('LocalScript', Close)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		script.Parent.Parent.Parent.Parent.LOLGETKEY:Destroy()
 	end)
 end
-coroutine.wrap(CVVVQOE_fake_script)()
-local function YHOPR_fake_script() -- Main.Dragify 
+coroutine.wrap(SDJTCTX_fake_script)()
+local function OGKEG_fake_script() -- Main.Dragify 
 	local script = Instance.new('LocalScript', Main)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -276,4 +321,4 @@ local function YHOPR_fake_script() -- Main.Dragify
 		end
 	end)
 end
-coroutine.wrap(YHOPR_fake_script)()
+coroutine.wrap(OGKEG_fake_script)()
