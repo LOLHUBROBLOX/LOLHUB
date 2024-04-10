@@ -2,7 +2,7 @@ local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shl
 
 OrionLib:MakeNotification({
     Name = "LOL HUB",
-    Content = "Script Ver 0.0.4",
+    Content = "Script Ver 0.0.5",
     Image = "rbxassetid://4483345998",
     Time = 5
 })
@@ -47,12 +47,19 @@ SectionMain:AddDropdown({
     Options = {"On", "Off"},
     Callback = function(Value)
         print(Value)
-        local ReplicatedStorage = game.ReplicatedStorage
+        local ReplicatedStorage = game:GetService("ReplicatedStorage")
         if Value == "On" then
-            ReplicatedStorage.Death.name = "DeathS"
+            ReplicatedStorage:WaitForChild("Death"):Destroy()
         elseif Value == "Off" then
-            ReplicatedStorage.DeathS.name = "Death"
-            
+            local Death = Instance.new("Remote")
+            Death.Name = "Death"
+            Death.Parent = game:GetService("ReplicatedStorage")
+            OrionLib:MakeNotification({
+                Name = "LOL HUB",
+                Content = "Anti Death off",
+                Image = "rbxassetid://4483345998",
+                Time = 5
+            })
         else
             OrionLib:MakeNotification({
                 Name = "LOL HUB",
@@ -72,29 +79,6 @@ local Premium = Window:MakeTab({
 
 local PS = Premium:AddSection({
     Name = "Premium Script"
-})
-
-PS:AddDropdown({
-    Name = "Anti Death",
-    Default = "Off",
-    Options = {"On", "Off"},
-    Callback = function(Value)
-        print(Value)
-        local ReplicatedStorage = game.ReplicatedStorage
-        if Value == "On" then
-            ReplicatedStorage.Death.name = "DeathS"
-        elseif Value == "Off" then
-            ReplicatedStorage.DeathS.name = "Death"
-            
-        else
-            OrionLib:MakeNotification({
-                Name = "LOL HUB",
-                Content = "Anti Death Error",
-                Image = "rbxassetid://4483345998",
-                Time = 5
-            })
-        end
-    end
 })
 
 PS:AddButton({
