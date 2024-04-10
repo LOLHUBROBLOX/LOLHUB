@@ -53,7 +53,7 @@ SectionMain:AddDropdown({
         elseif Value == "Off" then
             local Death = Instance.new("Remote")
             Death.Name = "Death"
-            Death.Parent = ReplicatedStorage
+            Death.Parent = game:GetService("ReplicatedStorage")
         else
             OrionLib:MakeNotification({
                 Name = "LOL HUB",
