@@ -2,7 +2,7 @@ local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shl
 
 OrionLib:MakeNotification({
     Name = "LOL HUB",
-    Content = "Script Ver 0.0.1",
+    Content = "Script Ver 0.0.2",
     Image = "rbxassetid://4483345998",
     Time = 5
 })
