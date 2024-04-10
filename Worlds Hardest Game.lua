@@ -153,7 +153,7 @@ UICorner_7.Parent = ds
 
 -- Scripts:
 
-local function SSITDON_fake_script() -- Enter.LocalScript 
+local function BJQA_fake_script() -- Enter.LocalScript 
 	local script = Instance.new('LocalScript', Enter)
 
 	local button = script.Parent -- Assuming the script is attached to a button
@@ -178,8 +178,7 @@ local function SSITDON_fake_script() -- Enter.LocalScript
 			else
 				button.Parent.Key.Text = "Make By LOL HUB"
 				wait(1)
-	
-				local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Orion/main/source.lua'))() -- corrected the URL
+				local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 	
 				OrionLib:MakeNotification({
 					Name = "LOL HUB",
@@ -208,16 +207,18 @@ local function SSITDON_fake_script() -- Enter.LocalScript
 				SectionMain:AddButton({
 					Name = "Win Now!",
 					Callback = function()
-						local no = player.LevelChange.Value
-						no = no + 1
-						if no < 33 then
-							local args = {
-								[1] = no,
-								[2] = "\240\159\134\147\240\159\141\140"
-							}
-							game:GetService("ReplicatedStorage"):WaitForChild("Win"):FireServer(unpack(args))
-						else
-							print("End")
+						local player = game.Players.LocalPlayer
+						if player then
+							local no = player.LevelChange.Value + 1
+							if no < 33 then
+								local args = {
+									[1] = no,
+									[2] = "\240\159\134\147\240\159\141\140"
+								}
+								game:GetService("ReplicatedStorage"):WaitForChild("Win"):FireServer(unpack(args))
+							else
+								print("End")
+							end
 						end
 					end
 				})
@@ -230,17 +231,29 @@ local function SSITDON_fake_script() -- Enter.LocalScript
 						print(Value)
 						local ReplicatedStorage = game:GetService("ReplicatedStorage")
 						if Value == "On" then
-							ReplicatedStorage:WaitForChild("Death"):Destroy()
-						elseif Value == "Off" then
-							local Death = Instance.new("Remote")
-							Death.Name = "Death"
-							Death.Parent = ReplicatedStorage
+							local Death = ReplicatedStorage:FindFirstChild("Death")
+							if Death then
+								Death:Destroy()
+							end
 							OrionLib:MakeNotification({
 								Name = "LOL HUB",
-								Content = "Anti Death off",
+								Content = "Anti Death enabled",
 								Image = "rbxassetid://4483345998",
 								Time = 5
 							})
+						elseif Value == "Off" then
+							local Death = ReplicatedStorage:FindFirstChild("Death")
+							if not Death then
+								Death = Instance.new("Remote")
+								Death.Name = "Death"
+								Death.Parent = ReplicatedStorage
+								OrionLib:MakeNotification({
+									Name = "LOL HUB",
+									Content = "Anti Death disabled",
+									Image = "rbxassetid://4483345998",
+									Time = 5
+								})
+							end
 						else
 							OrionLib:MakeNotification({
 								Name = "LOL HUB",
@@ -265,26 +278,31 @@ local function SSITDON_fake_script() -- Enter.LocalScript
 				PS:AddButton({
 					Name = "Win Speed Run",
 					Callback = function()
-						for i = 1, 32 do
-							local no = player.LevelChange.Value
-							local non = player.LevelChange.Value
-							no = no + 1
-							non = non + 2
-							local args1 = {
-								[1] = no,
-								[2] = "\240\159\134\147\240\159\141\140"
-							}
-							game:GetService("ReplicatedStorage"):WaitForChild("Win"):FireServer(unpack(args1))
-	
-							local args2 = {
-								[1] = non,
-								[2] = "\240\159\134\147\240\159\141\140"
-							}
-							game:GetService("ReplicatedStorage"):WaitForChild("Win"):FireServer(unpack(args2))
-							wait(0.1)
+						local player = game.Players.LocalPlayer
+						if player then
+							for i = 1, 32 do
+								local no = player.LevelChange.Value + 1
+								local non = player.LevelChange.Value + 2
+								if no < 33 then
+									local args1 = {
+										[1] = no,
+										[2] = "\240\159\134\147\240\159\141\140"
+									}
+									game:GetService("ReplicatedStorage"):WaitForChild("Win"):FireServer(unpack(args1))
+								end
+								if non < 33 then
+									local args2 = {
+										[1] = non,
+										[2] = "\240\159\134\147\240\159\141\140"
+									}
+									game:GetService("ReplicatedStorage"):WaitForChild("Win"):FireServer(unpack(args2))
+								end
+								wait(0.1)
+							end
 						end
 					end
 				})
+	
 			end
 			button.Parent.Parent.Parent.LOLGETKEY:Destroy()
 		else
@@ -293,16 +311,16 @@ local function SSITDON_fake_script() -- Enter.LocalScript
 	end)
 	
 end
-coroutine.wrap(SSITDON_fake_script)()
-local function QNAVF_fake_script() -- Close.LocalScript 
+coroutine.wrap(BJQA_fake_script)()
+local function JLTL_fake_script() -- Close.LocalScript 
 	local script = Instance.new('LocalScript', Close)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		script.Parent.Parent.Parent.Parent.LOLGETKEY:Destroy()
 	end)
 end
-coroutine.wrap(QNAVF_fake_script)()
-local function RAHQRNE_fake_script() -- Main.Dragify 
+coroutine.wrap(JLTL_fake_script)()
+local function RRIVLK_fake_script() -- Main.Dragify 
 	local script = Instance.new('LocalScript', Main)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -345,8 +363,8 @@ local function RAHQRNE_fake_script() -- Main.Dragify
 		end
 	end)
 end
-coroutine.wrap(RAHQRNE_fake_script)()
-local function VMIW_fake_script() -- ds.LocalScript 
+coroutine.wrap(RRIVLK_fake_script)()
+local function IXEWF_fake_script() -- ds.LocalScript 
 	local script = Instance.new('LocalScript', ds)
 
 	while true do
@@ -354,4 +372,4 @@ local function VMIW_fake_script() -- ds.LocalScript
 		wait(0.5)
 	end
 end
-coroutine.wrap(VMIW_fake_script)()
+coroutine.wrap(IXEWF_fake_script)()
