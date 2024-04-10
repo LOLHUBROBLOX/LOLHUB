@@ -2,7 +2,7 @@ local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shl
 
 OrionLib:MakeNotification({
     Name = "LOL HUB",
-    Content = "Script Ver 0.0.3",
+    Content = "Script Ver 0.0.4",
     Image = "rbxassetid://4483345998",
     Time = 5
 })
@@ -47,13 +47,12 @@ SectionMain:AddDropdown({
     Options = {"On", "Off"},
     Callback = function(Value)
         print(Value)
-        local ReplicatedStorage = game:GetService("ReplicatedStorage")
+        local ReplicatedStorage = game.ReplicatedStorage
         if Value == "On" then
-            ReplicatedStorage.Death:Destroy()
+            ReplicatedStorage.Death.name = "DeathS"
         elseif Value == "Off" then
-            local Death = Instance.new("Remote")
-            Death.Name = "Death"
-            Death.Parent = game:GetService("ReplicatedStorage")
+            ReplicatedStorage.DeathS.name = "Death"
+            
         else
             OrionLib:MakeNotification({
                 Name = "LOL HUB",
@@ -83,9 +82,10 @@ PS:AddDropdown({
         print(Value)
         local ReplicatedStorage = game.ReplicatedStorage
         if Value == "On" then
-            ReplicatedStorage.Death.name = "Death_"
+            ReplicatedStorage.Death.name = "DeathS"
         elseif Value == "Off" then
-            ReplicatedStorage.Death_.name = "Death"
+            ReplicatedStorage.DeathS.name = "Death"
+            
         else
             OrionLib:MakeNotification({
                 Name = "LOL HUB",
