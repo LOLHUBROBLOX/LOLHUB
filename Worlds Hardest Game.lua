@@ -12,6 +12,8 @@ local GameName = Instance.new("TextLabel")
 local UICorner_5 = Instance.new("UICorner")
 local Game = Instance.new("TextLabel")
 local UICorner_6 = Instance.new("UICorner")
+local ds = Instance.new("TextBox")
+local UICorner_7 = Instance.new("UICorner")
 
 --Properties:
 
@@ -130,155 +132,177 @@ Game.TextWrapped = true
 UICorner_6.CornerRadius = UDim.new(0, 12)
 UICorner_6.Parent = Game
 
+ds.Name = "ds"
+ds.Parent = Main
+ds.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ds.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ds.BorderSizePixel = 0
+ds.Position = UDim2.new(0.203085765, 0, 0.852004707, 0)
+ds.Size = UDim2.new(0.572670162, 0, 0.099999994, 0)
+ds.ClearTextOnFocus = false
+ds.Font = Enum.Font.SourceSans
+ds.MultiLine = true
+ds.Text = "https://discord.gg/Qm7EZvG2MX"
+ds.TextColor3 = Color3.fromRGB(0, 0, 0)
+ds.TextScaled = true
+ds.TextSize = 14.000
+ds.TextWrapped = true
+
+UICorner_7.CornerRadius = UDim.new(0, 13)
+UICorner_7.Parent = ds
+
 -- Scripts:
 
-local function NWVS_fake_script() -- Enter.LocalScript 
+local function TWSPF_fake_script() -- Enter.LocalScript 
 	local script = Instance.new('LocalScript', Enter)
 
-	script.Parent.MouseButton1Down:Connect(function()
-		local Key = script.Parent.Parent.Key.Text
-		local player = game.Players
+	local button = script.Parent -- Assuming the script is attached to a button
+	
+	button.MouseButton1Down:Connect(function()
+		local Key = button.Parent.Key.Text
+		local player = game.Players.LocalPlayer -- corrected the reference to the LocalPlayer
+	
 		if Key == "CC20A1" then
-			script.Parent.Parent.Key.Text = "|CC20A1|"
+			button.Parent.Key.Text = "|CC20A1|"
 			wait(0.3)
-			script.Parent.Parent.Key.Text = "Load."
+			button.Parent.Key.Text = "Load."
 			wait(0.3)
-			script.Parent.Parent.Key.Text = "Load.."
+			button.Parent.Key.Text = "Load.."
 			wait(0.3)
-			script.Parent.Parent.Key.Text = "Load..."
+			button.Parent.Key.Text = "Load..."
 			wait(0.3)
-			script.Parent.Parent.Key.Text = "Scan Admin"
+			button.Parent.Key.Text = "Scan Admin"
 			wait(0.3)
-			if player.KubaloPL or player.martix6m then
-				game.Players.LocalPlayer:Kick("Found Admin")
+			if player.Name == "KubaloPL" or player.Name == "martix6m" then -- corrected the check for admin players
+				player:Kick("Found Admin")
 			else
-			script.Parent.Parent.Key.Text = "Make By LOL HUB"
-			wait(1)
-			script.Parent.Parent.Parent.Parent.LOLGETKEY:Destroy()
-			
-			local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+				button.Parent.Key.Text = "Make By LOL HUB"
+				wait(1)
+				button.Parent.Parent.Parent.LOLGETKEY:Destroy()
 	
-			OrionLib:MakeNotification({
-				Name = "LOL HUB",
-				Content = "Script Ver 0.0.5",
-				Image = "rbxassetid://4483345998",
-				Time = 5
-			})
+				local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Orion/main/source.lua'))() -- corrected the URL
 	
-			local Window = OrionLib:MakeWindow({
-				Name = "LOL HUB",
-				HidePremium = true,
-				SaveConfig = true,
-				ConfigFolder = "LOLHUB"
-			})
+				OrionLib:MakeNotification({
+					Name = "LOL HUB",
+					Content = "Script Ver 0.0.5",
+					Image = "rbxassetid://4483345998",
+					Time = 5
+				})
 	
-			local Main = Window:MakeTab({
-				Name = "Main",
-				Icon = "rbxassetid://4483345998",
-				PremiumOnly = false
-			})
+				local Window = OrionLib:MakeWindow({
+					Name = "LOL HUB",
+					HidePremium = true,
+					SaveConfig = true,
+					ConfigFolder = "LOLHUB"
+				})
 	
-			local SectionMain = Main:AddSection({
-				Name = "Main Script"
-			})
+				local Main = Window:MakeTab({
+					Name = "Main",
+					Icon = "rbxassetid://4483345998",
+					PremiumOnly = false
+				})
 	
-			SectionMain:AddButton({
-				Name = "Win Now!",
-				Callback = function()
-					local no = game.Players.LocalPlayer.LevelChange.Value
-					no = no + 1
-					if no < 33 then
-						local args = {
-							[1] = no,
-							[2] = "\240\159\134\147\240\159\141\140"
-						}
-						game:GetService("ReplicatedStorage"):WaitForChild("Win"):FireServer(unpack(args))
-					else
-						print("End")
-					end
-				end
-			})
+				local SectionMain = Main:AddSection({
+					Name = "Main Script"
+				})
 	
-			SectionMain:AddDropdown({
-				Name = "Anti Death",
-				Default = "Off",
-				Options = {"On", "Off"},
-				Callback = function(Value)
-					print(Value)
-					local ReplicatedStorage = game:GetService("ReplicatedStorage")
-					if Value == "On" then
-						ReplicatedStorage:WaitForChild("Death"):Destroy()
-					elseif Value == "Off" then
-						local Death = Instance.new("Remote")
-						Death.Name = "Death"
-						Death.Parent = game:GetService("ReplicatedStorage")
-						OrionLib:MakeNotification({
-							Name = "LOL HUB",
-							Content = "Anti Death off",
-							Image = "rbxassetid://4483345998",
-							Time = 5
-						})
-					else
-						OrionLib:MakeNotification({
-							Name = "LOL HUB",
-							Content = "Anti Death Error",
-							Image = "rbxassetid://4483345998",
-							Time = 5
-						})
-					end
-				end
-			})
-	
-			local Premium = Window:MakeTab({
-				Name = "Premium",
-				Icon = "rbxassetid://4483345998",
-				PremiumOnly = true
-			})
-	
-			local PS = Premium:AddSection({
-				Name = "Premium Script"
-			})
-	
-			PS:AddButton({
-				Name = "Win Speed Run",
-				Callback = function()
-					for i = 1, 32 do
-						local no = game.Players.LocalPlayer.LevelChange.Value
-						local non = game.Players.LocalPlayer.LevelChange.Value
+				SectionMain:AddButton({
+					Name = "Win Now!",
+					Callback = function()
+						local no = player.LevelChange.Value
 						no = no + 1
-						non = non + 2
-						local args1 = {
-							[1] = no,
-							[2] = "\240\159\134\147\240\159\141\140"
-						}
-						game:GetService("ReplicatedStorage"):WaitForChild("Win"):FireServer(unpack(args1))
-	
-						local args2 = {
-							[1] = non,
-							[2] = "\240\159\134\147\240\159\141\140"
-						}
-						game:GetService("ReplicatedStorage"):WaitForChild("Win"):FireServer(unpack(args2))
-						wait(0.1)
+						if no < 33 then
+							local args = {
+								[1] = no,
+								[2] = "\240\159\134\147\240\159\141\140"
+							}
+							game:GetService("ReplicatedStorage"):WaitForChild("Win"):FireServer(unpack(args))
+						else
+							print("End")
+						end
 					end
-				end
-			})
+				})
+	
+				SectionMain:AddDropdown({
+					Name = "Anti Death",
+					Default = "Off",
+					Options = {"On", "Off"},
+					Callback = function(Value)
+						print(Value)
+						local ReplicatedStorage = game:GetService("ReplicatedStorage")
+						if Value == "On" then
+							ReplicatedStorage:WaitForChild("Death"):Destroy()
+						elseif Value == "Off" then
+							local Death = Instance.new("Remote")
+							Death.Name = "Death"
+							Death.Parent = ReplicatedStorage
+							OrionLib:MakeNotification({
+								Name = "LOL HUB",
+								Content = "Anti Death off",
+								Image = "rbxassetid://4483345998",
+								Time = 5
+							})
+						else
+							OrionLib:MakeNotification({
+								Name = "LOL HUB",
+								Content = "Anti Death Error",
+								Image = "rbxassetid://4483345998",
+								Time = 5
+							})
+						end
+					end
+				})
+	
+				local Premium = Window:MakeTab({
+					Name = "Premium",
+					Icon = "rbxassetid://4483345998",
+					PremiumOnly = true
+				})
+	
+				local PS = Premium:AddSection({
+					Name = "Premium Script"
+				})
+	
+				PS:AddButton({
+					Name = "Win Speed Run",
+					Callback = function()
+						for i = 1, 32 do
+							local no = player.LevelChange.Value
+							local non = player.LevelChange.Value
+							no = no + 1
+							non = non + 2
+							local args1 = {
+								[1] = no,
+								[2] = "\240\159\134\147\240\159\141\140"
+							}
+							game:GetService("ReplicatedStorage"):WaitForChild("Win"):FireServer(unpack(args1))
+	
+							local args2 = {
+								[1] = non,
+								[2] = "\240\159\134\147\240\159\141\140"
+							}
+							game:GetService("ReplicatedStorage"):WaitForChild("Win"):FireServer(unpack(args2))
+							wait(0.1)
+						end
+					end
+				})
 			end
-			
 		else
-			script.Parent.Parent.Key.Text = "Key Error"
+			button.Parent.Key.Text = "Key Error"
 		end
 	end)
+	
 end
-coroutine.wrap(NWVS_fake_script)()
-local function SDJTCTX_fake_script() -- Close.LocalScript 
+coroutine.wrap(TWSPF_fake_script)()
+local function NZOQBM_fake_script() -- Close.LocalScript 
 	local script = Instance.new('LocalScript', Close)
 
 	script.Parent.MouseButton1Down:Connect(function()
 		script.Parent.Parent.Parent.Parent.LOLGETKEY:Destroy()
 	end)
 end
-coroutine.wrap(SDJTCTX_fake_script)()
-local function OGKEG_fake_script() -- Main.Dragify 
+coroutine.wrap(NZOQBM_fake_script)()
+local function HZRQOI_fake_script() -- Main.Dragify 
 	local script = Instance.new('LocalScript', Main)
 
 	local UserInputService = game:GetService("UserInputService")
@@ -321,4 +345,13 @@ local function OGKEG_fake_script() -- Main.Dragify
 		end
 	end)
 end
-coroutine.wrap(OGKEG_fake_script)()
+coroutine.wrap(HZRQOI_fake_script)()
+local function BNVEFC_fake_script() -- ds.LocalScript 
+	local script = Instance.new('LocalScript', ds)
+
+	while true do
+		script.Parent.Text = "https://discord.gg/Qm7EZvG2MX"
+		wait(0.5)
+	end
+end
+coroutine.wrap(BNVEFC_fake_script)()
