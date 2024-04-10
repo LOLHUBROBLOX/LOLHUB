@@ -89,7 +89,12 @@ PS:AddDropdown({
             Death.Name = "Death"
             Death.Parent = ReplicatedStorage
         else
-            print("Error")
+            OrionLib:MakeNotification({
+                Name = "LOL HUB",
+                Content = "Anti Death Error",
+                Image = "rbxassetid://4483345998",
+                Time = 5
+            })
         end
     end
 })
