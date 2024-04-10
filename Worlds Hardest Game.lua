@@ -7,7 +7,12 @@ OrionLib:MakeNotification({
     Time = 5
 })
 
-local Window = OrionLib:MakeWindow({Name = "LOL HUB", HidePremium = true, SaveConfig = true, ConfigFolder = "LOLHUB"})
+local Window = OrionLib:MakeWindow({
+    Name = "LOL HUB",
+    HidePremium = true,
+    SaveConfig = true,
+    ConfigFolder = "LOLHUB"
+})
 
 local Main = Window:MakeTab({
     Name = "Main",
@@ -90,30 +95,25 @@ PS:AddDropdown({
 })
 
 PS:AddButton({
-    Name = "Win Speed Run Win,
+    Name = "Win Speed Run",
     Callback = function()
-        for i = 1,32 do
+        for i = 1, 32 do
+            local no = game.Players.LocalPlayer.LevelChange.Value
+            local non = game.Players.LocalPlayer.LevelChange.Value
+            no = no + 1
+            non = non + 2
+            local args1 = {
+                [1] = no,
+                [2] = "\240\159\134\147\240\159\141\140"
+            }
+            game:GetService("ReplicatedStorage"):WaitForChild("Win"):FireServer(unpack(args1))
 
-        local no = game.Players.LocalPlayer.LevelChange.Value
-        local non = game.Players.LocalPlayer.LevelChange.Value
-        if no == "32" and non == "32" then
-            
-        else
-        no = no + 1
-        non = non + 2
-        local args = {
-            [1] = no,
-            [2] = "\240\159\134\147\240\159\141\140"
-        }
-        game:GetService("ReplicatedStorage"):WaitForChild("Win"):FireServer(unpack(args))
-
-        local args = {
-            [1] = non,
-            [2] = "\240\159\134\147\240\159\141\140"
-        }
-        game:GetService("ReplicatedStorage"):WaitForChild("Win"):FireServer(unpack(args))
-        wait(0.1)
-    end
-    end
+            local args2 = {
+                [1] = non,
+                [2] = "\240\159\134\147\240\159\141\140"
+            }
+            game:GetService("ReplicatedStorage"):WaitForChild("Win"):FireServer(unpack(args2))
+            wait(0.1)
+        end
     end
 })
