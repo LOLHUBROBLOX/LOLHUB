@@ -6,6 +6,8 @@ local Key = Instance.new("TextBox")
 local UICorner_2 = Instance.new("UICorner")
 local Enter = Instance.new("TextButton")
 local UICorner_3 = Instance.new("UICorner")
+local Close = Instance.new("TextButton")
+local UICorner_4 = Instance.new("UICorner")
 
 --Properties:
 
@@ -73,13 +75,30 @@ Enter.TextWrapped = true
 UICorner_3.CornerRadius = UDim.new(0, 13)
 UICorner_3.Parent = Enter
 
+Close.Name = "Close"
+Close.Parent = Main
+Close.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Close.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Close.BorderSizePixel = 0
+Close.Position = UDim2.new(0.906800985, 0, 0.0383254699, 0)
+Close.Size = UDim2.new(0.0676953346, 0, 0.129481167, 0)
+Close.Font = Enum.Font.SourceSansBold
+Close.Text = "Close"
+Close.TextColor3 = Color3.fromRGB(0, 0, 0)
+Close.TextScaled = true
+Close.TextSize = 14.000
+Close.TextWrapped = true
+
+UICorner_4.CornerRadius = UDim.new(0, 88)
+UICorner_4.Parent = Close
+
 -- Scripts:
 
-local function ZQCAEBJ_fake_script() -- Enter.LocalScript 
+local function SRVRNR_fake_script() -- Enter.LocalScript 
 	local script = Instance.new('LocalScript', Enter)
 
 	script.Parent.MouseButton1Down:Connect(function()
-		local Key = script.Parent.Parent.Key
+		local Key = script.Parent.Parent.Key.Text
 		
 		if Key == "CC20A1" then
 			script.Parent.Parent.Key.Text = "|CC20A1|"
@@ -205,4 +224,56 @@ local function ZQCAEBJ_fake_script() -- Enter.LocalScript
 		end
 	end)
 end
-coroutine.wrap(ZQCAEBJ_fake_script)()
+coroutine.wrap(SRVRNR_fake_script)()
+local function CVVVQOE_fake_script() -- Close.LocalScript 
+	local script = Instance.new('LocalScript', Close)
+
+	script.Parent.MouseButton1Down:Connect(function()
+		script.Parent.Parent.Parent.Parent.LOLGETKEY:Destroy()
+	end)
+end
+coroutine.wrap(CVVVQOE_fake_script)()
+local function YHOPR_fake_script() -- Main.Dragify 
+	local script = Instance.new('LocalScript', Main)
+
+	local UserInputService = game:GetService("UserInputService")
+	
+	local gui = script.Parent
+	
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+	
+	local function update(input)
+		local delta = input.Position - dragStart
+		gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	end
+	
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+	
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			update(input)
+		end
+	end)
+end
+coroutine.wrap(YHOPR_fake_script)()
